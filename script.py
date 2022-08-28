@@ -1,14 +1,27 @@
 import math
 
-octaves = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-freqOfA = [27.5, 55, 110, 220, 440, 880, 1760, 3520, 7040]
+class Key:
+    """
+    Frequency of each key in octave 0
+    """
+    C = 261.63
+    C_sharp = D_flat = 277.18
+    D = 293.66	
+    D_sharp = E_flat = 311.13
+    E = 329.63
+    F = 349.23
+    F_sharp = G_flat = 369.99
+    G = 392.00
+    G_sharp = A_flat = 415.30
+    A = 440.00
+    A_sharp = B_flat = 466.16
+    B = 493.88
 
-def find_C(min_freq, max_freq):
-    diff = max_freq - min_freq
-    note_increment = diff / 13
-    math.log
-    print(note_increment)
-    b_flat = min_freq + (note_increment)
-    return b_flat
+def find_Freq_By_Octave(octave, key):
+    base_freq = key
+    freq = base_freq * (2 ** (octave - 4))
+    return round(freq, 2)
 
-print(find_C(440, 880))
+print(
+    find_Freq_By_Octave(8, Key.A)
+)
