@@ -1,27 +1,32 @@
-const musicNoteDisplay = document.querySelector('.music-note')
-const frequencyDisplay = document.querySelector('.frequency')
-
-let frequency = 440 // A4
-
-function convert_to_music_note(frequency){
-
+const keys = {
+    C: 261.63,
+    C_sharp: 277.18,
+    D_flat: 277.18,
+    D: 293.66,
+    D_sharp: 311.13,
+    E_flat: 311.13,
+    E: 329.63,
+    F: 349.23,
+    F_sharp: 369.99,
+    G_flat: 369.99,
+    G: 392.00,
+    G_sharp: 415.30,
+    A_flat: 415.30,
+    A: 440.00,
+    A_sharp: 466.16,
+    B_flat: 466.16,
+    B: 493.88,
 }
 
-musicNoteDisplay.innerHTML = convert_to_music_note(frequency)
+function round(value, precision){
+    const multiplier = Math.pow(10, precision || 0)
+    return Math.round(value * multiplier) / multiplier
+}
 
-// Find the slope of frequencies plotted by octaves of A
+function findKeyFrequency(key, octave = 4){
+    const base_freq = key
+    const freq = base_freq * (2 ** (octave - 4))
+    return round(freq, 2)
+}
 
-// const x1 = 4
-// const x2 = 5
-
-// const y1 = 440 // A4
-// const y2 = 880 // A5
-
-const x1 = 3
-const x2 = 5
-
-const y1 = 220
-const y2 = 880
-
-let m = (y2 - y1) / (x2 - x1)
-console.log(m)
+console.log(findKeyFrequency(keys.C))

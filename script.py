@@ -1,5 +1,3 @@
-import math
-
 class Key:
     """
     Frequency of each key in octave 0
@@ -17,11 +15,11 @@ class Key:
     A_sharp = B_flat = 466.16
     B = 493.88
 
-def find_Freq_By_Octave(octave, key):
+def find_Key_Frequency(key, octave = 4):
     base_freq = key
     freq = base_freq * (2 ** (octave - 4))
     return round(freq, 2)
 
 print(
-    find_Freq_By_Octave(8, Key.A)
+    find_Key_Frequency(Key.C)
 )
